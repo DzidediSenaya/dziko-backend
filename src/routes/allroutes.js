@@ -26,4 +26,8 @@ router.get('/api/events/:id', getEvent); // Retrieve a specific event by its ID
 router.put('/api/events/:id', updateEvent); // Update a specific event by its ID
 router.delete('/api/events/:id', deleteEvent); // Delete a specific event by its ID
 
+//login routes
+router.post('/login', login)
+router.get('/account/:id', getAccount)
+
 export default router;
