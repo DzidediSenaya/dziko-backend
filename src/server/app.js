@@ -1,21 +1,30 @@
 import express from "express";
-import dotenv from "dotenv";
-import mongoose from "mongoose";
-import { router } from "../routes/allroutes.js";
-
-dotenv.config();
-const app = express();
-app.use(express.json())
-app.use(router)
-const mongoUri = process.env.MONGO_URI;
-
-mongoose.connect(mongoUri).then(() => {
-    console.log('Database connected');
-}).catch((error) => console.log(error));
-
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import Connection from "./db/connection.js";
+import authRoutes from "./routes/authRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 const PORT = process.env.PORT || 8080;
+const app = express();
 
-app.listen(PORT, () => {
-    console.log(`DZIKO API is running! ${PORT}`);
-});
+//add middlewares
+app.use(
+  cors({
+    credentials: true,
+    origin: "http://localhost:5173",
+  })
+);
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+
+//add routes
+app.use("/api/auth", authRoutes);
+app.use("/api/user", userRoutes);
+
+//set up mongo db connection
+Connection();
+
+//listening to server connection
+app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`));
