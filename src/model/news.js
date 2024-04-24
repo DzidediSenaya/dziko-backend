@@ -7,12 +7,14 @@ const NewsSchema = new Schema({
         type: String,
         required: true
     },
-    description: {
-        type: String,
-        required: true
-    },
+
     date: {
         type: Date,
+        required: true
+    },
+
+    description: {
+        type: String,
         required: true
     }
 });
