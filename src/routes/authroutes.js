@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { checkLoginCredentials } from "../middlewares/checkLoginCredentials.js";
-import { checkUserExists } from "../middlewares/checkUserExists.js";
-import { login, logout, signup } from "../controllers/authController.js";
+import { checkLoginCredentials } from "../middlewares/checklogincredentials.js";
+import { checkUserExists } from "../middlewares/verifyuserexistence.js";
+import { login, logout, signup } from "../controllers/auth_controller.js";
 
 const router = Router();
 

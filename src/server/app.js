@@ -1,9 +1,9 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import Connection from "./db/connection.js";
-import authRoutes from "./routes/authRoutes.js";
-import userRoutes from "./routes/userRoutes.js";
+import Connection from "../db/connection.js";
+import authRoutes from "../routes/authroutes.js";
+import userRoutes from "../routes/userRoutes.js";
 
 const PORT = process.env.PORT || 8080;
 const app = express();
